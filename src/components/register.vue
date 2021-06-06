@@ -14,6 +14,7 @@
           v-model.lazy="password"
           type="password"
           placeholder="Password"
+          show-password
         ></el-input>
       </el-form-item>
       <el-form-item>

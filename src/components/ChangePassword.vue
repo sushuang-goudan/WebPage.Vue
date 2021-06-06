@@ -31,12 +31,14 @@
           placeholder="modify new password"
         ></el-input>
       </el-form-item>
+
       <el-form-item>
         <el-button
           round
           @click="ChangePwd"
         >Sure to modify</el-button>
       </el-form-item>
+
     </el-form>
   </body>
 </template>
@@ -58,10 +60,6 @@ export default {
     LoginuserName() {
       return Cookies.get("userName");
     },
-  },
-  change(e) {
-    //this.$forceUpdate();
-    alert("i have ");
   },
   methods: {
     ChangePwd: function () {
@@ -85,7 +83,8 @@ export default {
       ) {
         alert("密码不能为空");
         return;
-      } else if (this.newpassword === this.newpassword2) {
+      }
+       else if (this.newpassword === this.newpassword2) {
         //发送请求，
         this.$axios
           .post("/ChangePwdPage", fd, config)

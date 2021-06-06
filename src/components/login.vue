@@ -1,29 +1,31 @@
 <template>
-
   <body id="login">
     <el-form class='Login-container'>
       <h2 class='Login-title'>The Login Page</h2>
       <el-form-item>
         <el-input
-          v-model.lazy="username"
+          v-model="username"
           type="text"
           placeholder="UserName"
+          clearable="Ture"
         ></el-input>
       </el-form-item>
       <el-form-item>
         <el-input
-          v-model.lazy="password"
+          v-model="password"
           type="password"
           placeholder="please input  password"
+          show-password
         ></el-input>
       </el-form-item>
+
       <el-form-item>
         <el-button
           round
-          @click='sumbit()'
-          type="submit"
-        >login</el-button>
+          @click="login"
+        >Login</el-button>
       </el-form-item>
+
       <el-form-item id="label">
         <label for="hi"><a
             @click="newId"
@@ -42,7 +44,6 @@
 </template>
 
 <script>
-//import Cookies from 'js-cookie';
 export default {
   name: "Login",
   data: function () {
@@ -52,13 +53,20 @@ export default {
     };
   },
   methods: {
-    newId() {
+    newId:function() {
       this.$router.replace("/RegisterPage");
+    },
+    login:function(){
+      if (this.username.length === 0){
+        alert("Please enter your user name!")
+      }
+      else if (this.password.length === 0){
+        alert('The password cannot be empty!')
+      }
     },
   },
 };
 </script>
-
 
 <!-- 添加“scoped”属性以将CSS仅限于此组件 -->
 <style scoped>
