@@ -1,8 +1,8 @@
 <template >
   <body id='CH'>
     <el-form class="Changepsw-container">
-      <h2 class='Change-title'>The ChangePassword Page</h2>
-      <h3 class='Change-title'>The current logged in user is：{{ LoginuserName }}</h3>
+      <h2  class='Change-title'>The ChangePassword Page</h2>
+      <h3  class='Change-title'>The current logged in user is：{{ LoginuserName }}</h3>
       <el-form-item>
         <el-input
           type='text'
@@ -119,7 +119,7 @@ export default {
 .Changepsw-container {
   border-radius: 15px;
   background-clip: padding-box;
-  margin: 90px auto;
+  margin: 0 auto;
   width: 350px;
   padding: 35px 35px 15px 35px;
   background: rgb(252, 247, 247);

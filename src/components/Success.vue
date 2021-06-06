@@ -1,24 +1,21 @@
-<template id="success">
-  <!--<div style="text-align:center">-->
-  <div>
-    <h2>{{message}}</h2>
-    <router-link to='/'>
-      <span>Back to login page</span>
+<template>
+<body id='Success'>
+      <h1>{{message}}</h1>
+    <router-link class="link link2" to='/'>
+         Back to login page
     </router-link>
-  </div>
+</body>
 </template>
 
 <script type='text/javascript'>
 import Cookies from "js-cookie";
 export default {
   name: "Success",
-  data: {
-    function() {
+  data: function() {
       return {
         message: "Hello! Login in successfully！",
       };
     },
-  },
   computed: {
     username() {
       return this.message.split("").reverse().join("");
@@ -29,8 +26,11 @@ export default {
 
 <!-- 添加“scoped”属性以将CSS仅限于此组件 -->
 <style scoped>
-div{
-  text-align: center;
+h1{
+  font-size:40px;
+}
+.link2{
+  font-size:30px;
 }
 </style>
 

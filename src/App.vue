@@ -38,13 +38,17 @@ export default {
   font-family:'Lucida ConsoleFantasy',Arial, Helvetica, sans-serif;
 }
 .el-main{
-  line-height:160px;
   text-align:center;
+  height:0;
+  flex-grow:1;
 }
 .el-footer {
   color:#909399;
   text-align:center;
   line-height:80px;
   font-family:'Courie New','Lucida ConsoleFantasy',Arial, Helvetica, sans-serif;
+}
+.el-main .link:hover {
+  color:rgb(47, 87, 160);
 }
 </style>
