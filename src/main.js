@@ -14,8 +14,8 @@ Vue.use(ElementUI)
 //设置反向代理：
 var axios=require('axios')
 
-axios.defaults.baseURL='http://localhost:8002';
-Vue.prototype.Host='/user'
+axios.defaults.baseURL='http://localhost:8002/api';
+//全局注册，之后可以在其他组件中通过this.$axios发送数据
 Vue.prototype.$axios=axios
 
 Vue.config.productionTip = false

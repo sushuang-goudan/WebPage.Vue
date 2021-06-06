@@ -1,51 +1,35 @@
 <template >
-
   <body id='CH'>
     <el-form class="Changepsw-container">
-      <h2 class="Change-title">The ChangePassword Page</h2>
-      <h3 class="top_div">The current logged in user is：{{ LoginuserName }}</h3>
-      <br />
-      <!--<el-form-item>-->
-      <!--  UserName:-->
-      <el-form-item label="">
-        <el-input
-          type="text"
-          v-model="LoginuserName"
-          auto-complete="off"
-          @input="change($event)"
-          placeholder="Username"
-        />
-      </el-form-item>
-
+      <h2 class='Change-title'>The ChangePassword Page</h2>
+      <h3 class='Change-title'>The current logged in user is：{{ LoginuserName }}</h3>
       <el-form-item>
-        <!--Old Password:-->
         <el-input
-          type="password"
+          type='text'
+          v-model='loginusername'
+          placeholder="UserName"
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input
+          type='password'
           v-model="oldpassword"
-          auto-complete="off"
-          placeholder="Old password"
-        />
+          placeholder="input old password"
+        ></el-input>
       </el-form-item>
       <el-form-item>
-        <!-- New Password:-->
         <el-input
-          type="password"
+          type='password'
           v-model="newpassword"
-          auto-complete="off"
-          @input="change($event)"
-          placeholder="New password"
-          show-password
-        />
+          placeholder="input new password"
+        ></el-input>
       </el-form-item>
       <el-form-item>
-        <!-- Determine Password:-->
         <el-input
-          type="password"
+          type='password'
           v-model="newpassword2"
-          auto-complete="off"
-          @input="change($event)"
-          placeholder="input newpassword again"
-        />
+          placeholder="modify new password"
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -53,7 +37,6 @@
           @click="ChangePwd"
         >Sure to modify</el-button>
       </el-form-item>
-
     </el-form>
   </body>
 </template>
@@ -62,12 +45,9 @@
 import Cookies from "js-cookie";
 export default {
   name: "ChangePwd",
-  FormData: {
-    value: "",
-  },
-  data() {
+  data: function () {
     return {
-      LoginuserName: "",
+      loginusername: "",
       oldpassword: "",
       newpassword: "",
       newpassword2: "",
@@ -80,14 +60,15 @@ export default {
     },
   },
   change(e) {
-    this.$forceUpdate();
+    //this.$forceUpdate();
+    alert("i have ");
   },
   methods: {
     ChangePwd: function () {
       //创建与表单相同的数据
       let fd = new FormData();
 
-      fd.append("username", this.LoginuserName);
+      fd.append("username", this.loginusername);
       fd.append("oldpassword", this.oldpassword);
       fd.append("newpassword", this.newpassword);
       //配置请求头
@@ -107,16 +88,15 @@ export default {
       } else if (this.newpassword === this.newpassword2) {
         //发送请求，
         this.$axios
-          .post("user/changepwd", fd, config)
+          .post("/ChangePwdPage", fd, config)
           //请求成功的回调函数
           //.then(function(response){......})
           .then((res) => {
             alert(res.data.msg);
-
             //&&响应结束，
             if (res.data.code === 200) {
               // 回到登录界面
-              this.$router.push({
+              this.$router.repalce({
                 path: "/LoginPage",
               });
             }
@@ -134,39 +114,18 @@ export default {
 </script>
 
 
-<script>
-export default {
-  name: "ChangePsw",
-  data: function () {
-    return {};
-  },
-};
-</script>
-
 <!-- 添加“scoped”属性以将CSS仅限于此组件 -->
 <style scoped>
-#CH {
-  background: url(~@/assets/children.jpg) no-repeat;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  position: fixed;
-}
-body {
-  margin: 0px;
-}
 .Changepsw-container {
   border-radius: 15px;
   background-clip: padding-box;
   margin: 90px auto;
   width: 350px;
   padding: 35px 35px 15px 35px;
-  background: #fff;
+  background: rgb(252, 247, 247);
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
 }
-
 .Change-title {
   margin: 0px auto 40px auto;
   text-align: center;

@@ -1,55 +1,36 @@
 <template id="success">
-   <!--<div style="text-align:center">-->
-     <div style="text-align:center">
-    <h2 :style="StyleB">Hello! Login in successfully！</h2>
-     <img src="">
-     <router-link to='/'>
-       <span :style="StyleC">Back to login page</span>
-     </router-link>
-   </div>
+  <!--<div style="text-align:center">-->
+  <div>
+    <h2>{{message}}</h2>
+    <router-link to='/'>
+      <span>Back to login page</span>
+    </router-link>
+  </div>
 </template>
 
 <script type='text/javascript'>
-  //import Cookies from 'js-cookie';
-  //export default{
-   // data:{
-    //  message: 'Hello'
-    //},
-    //computed:{
-    //  username(){
-    //  return this.message.split('').reverse().join('');
-     // }
-    //}
-  //}
+import Cookies from "js-cookie";
 export default {
-    name:'Success',
-  data:function(){
-    return{
-    }
-  }
-}
-
-/*var Success=new Vue({
-  el:'Success',
-  data:{
-    StyleB:{
-      color:'LightBule',
-      fontSize: '30px'
+  name: "Success",
+  data: {
+    function() {
+      return {
+        message: "Hello! Login in successfully！",
+      };
     },
-    StyleC:{
-      color:'LightRed',
-      frontSize:'20px'
-    }
-  }
-})
-*/
+  },
+  computed: {
+    username() {
+      return this.message.split("").reverse().join("");
+    },
+  },
+};
 </script>
+
 <!-- 添加“scoped”属性以将CSS仅限于此组件 -->
 <style scoped>
-
-     /* color:'LightBule',
-      fontSize: '30px'
-      color:'LightRed',
-      frontSize:'20px'*/
+div{
+  text-align: center;
+}
 </style>
 
