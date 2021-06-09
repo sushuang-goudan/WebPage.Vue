@@ -1,6 +1,6 @@
 <template>
 <body id='Success'>
-      <h1>{{message}}</h1>
+      <h1>{{username}}{{message}}</h1>
     <router-link class="link link2" to='/'>
          Back to login page
     </router-link>
@@ -13,12 +13,13 @@ export default {
   name: "Success",
   data: function() {
       return {
-        message: "Hello! Login in successfully！",
+        message: "  Hello! Login in successfully！",
       };
     },
   computed: {
     username() {
-      return this.message.split("").reverse().join("");
+     // Cookies.set('userName','ss');
+      return Cookies.get('userName');
     },
   },
 };

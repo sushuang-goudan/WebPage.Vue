@@ -43,14 +43,42 @@ export default {
     return {
       isAgree: false,
       username: "",
-      mobile: "",
       password: "",
     };
   },
   methods:{
     register:function(){
+      let fd=new FormData();
+    //在form-data表单中添加数据
+      fd.append('userName',this.username);
+      fd.append('passwd',this.password);
+
+      let config={
+        headers:{
+          'Content-Type':'mutipart/form-data'
+        }
+      }
+
       if(!this.isAgree){
         alert('Please agree to the protocol first!')
+      }
+      else{
+        this.$axios
+        .post('user/register',fd,config)
+        .then(res=>{
+          alert(res.data.msg);
+          //响应结束时
+          if(res.data.code===200){
+            //回到LoginPage
+            this.$router.push({
+              path:'/'
+            })
+          }
+        })
+        .catch(res=>{
+          alert(res.data.msg);
+        }
+        )
       }
     }
   }

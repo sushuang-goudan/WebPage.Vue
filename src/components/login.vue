@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie';
 export default {
   name: "Login",
   data: function () {
@@ -57,11 +58,42 @@ export default {
       this.$router.replace("/RegisterPage");
     },
     login:function(){
+      let fd=new FormData();
+      fd.append('userNanme',this.username);
+      fd.append('passwd',this.password);
+
+      //配置请求头
+      let config={
+        headers:{
+          'Content-Type':'mutipart/form-data'
+        }
+      }
+
       if (this.username.length === 0){
         alert("Please enter your user name!")
       }
       else if (this.password.length === 0){
         alert('The password cannot be empty!')
+      }
+      else{
+        this.$axios
+        .post('user/login',fd,config)
+        .then(res=>{
+          alert(res.data.msg)
+          if(res.data.code===200){
+            Cookies.set('userName',fd.get('userName'));
+            this.$router.push({
+              path:'/SucessPage'
+            })
+          }
+          else{
+            alert('响应失败');
+          }
+        })
+        //此时应该警告（错误）
+        .catch(res=>{
+          alert(res.data.msg);
+        })
       }
     },
   },

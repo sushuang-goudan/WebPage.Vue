@@ -58,6 +58,7 @@ export default {
   created() {},
   computed: {
     LoginuserName() {
+      //从保存的cookie中或得用户名
       return Cookies.get("userName");
     },
   },

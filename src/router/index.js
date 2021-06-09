@@ -20,7 +20,11 @@ export default new Router({
     {
       path:'/SuccessPage',
       name:'Success',
-      component:SuccessPage
+      component:SuccessPage,
+      //在需要拦截页面的路由中加一条元数据，设置一个requireAuth字段
+      meta:{
+        requireAuth:true
+      }
     },
     {
       path: '/RegisterPage',
